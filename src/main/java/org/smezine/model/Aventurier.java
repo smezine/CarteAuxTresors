@@ -1,14 +1,13 @@
 package org.smezine.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import java.util.List;
+import lombok.*;
+import org.smezine.model.enumeration.Orientation;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Aventurier extends Case {
 
     private String nom;
@@ -21,15 +20,11 @@ public class Aventurier extends Case {
 
     private int nbTresorsRamasses;
 
-    public int nextDeplacement(){
-        return this.numeroDeplacement++;
+    public void deplacementSuivant(){
+        this.numeroDeplacement++;
     }
 
     public char getDeplacement(){
         return deplacements[numeroDeplacement];
-    }
-
-    public int getNombreDeplacements(){
-        return deplacements.length;
     }
 }

@@ -2,6 +2,7 @@ package org.smezine.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.smezine.model.enumeration.TypologieCase;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +24,16 @@ public class Case {
         this.typologieCase = typologieCase;
     }
 
-    public void ajouterTresor(){
-        nbTresors++;
+    public Case(int positionVerticale, int positionHorizontale, int nbTresors){
+        this.positionVerticale = positionVerticale;
+        this.positionHorizontale = positionHorizontale;
+        this.typologieCase = TypologieCase.T;
+        this.nbTresors = nbTresors;
+    }
+
+
+
+    public void supprimerTresor(){
+        nbTresors--;
     }
 }

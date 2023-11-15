@@ -1,23 +1,31 @@
 package org.smezine;
 
 import org.smezine.model.Carte;
-import org.smezine.service.impl.InitGame;
+import org.smezine.service.impl.JeuService;
+import org.smezine.utils.CarteUtils;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        InitGame initGame = new InitGame();
+        try {
+            var jeuService = new JeuService();
 
-        Carte carte = initGame.chargerCarte();
+            System.out.println("Initialisation de la carte à partir du fichier DonneesJeu.txt ..");
+            Carte carte = jeuService.chargerCarte();
 
-        System.out.println("La carte est chargée. Pour lancer le jeu, appuyez sur entrer ");
+            System.out.println("Affichage de la carte initiale : ");
+            CarteUtils.afficherCarte(carte);
 
-        initGame.lancerTour(carte);
+            System.out.println("Lancement du jeu : ");
+            jeuService.lancerTours(carte);
 
-        System.out.println("Fin de jeu : carte " + carte);
+            System.out.println("Fin de jeu sans erreur ! Affichage de la carte finale : ");
+            CarteUtils.afficherCarte(carte);
 
+            System.out.println("Generation du fichier de sortie : ResultatFinal.txt");
+            CarteUtils.genererFichierSortie(carte);
+
+        } catch (Exception e){
+            System.out.println("Fin de jeu en erreur." + e.getMessage());
+        }
     }
 }

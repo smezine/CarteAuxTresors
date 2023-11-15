@@ -1,4 +1,4 @@
-package org.smezine.model;
+package org.smezine.model.enumeration;
 
 public enum TypologieCase {
 
@@ -6,5 +6,5 @@ public enum TypologieCase {
     P,
     M,
     T,
-    A;
+    A
 }

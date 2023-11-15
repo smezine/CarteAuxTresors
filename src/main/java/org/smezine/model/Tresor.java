@@ -7,6 +7,11 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class Tresor extends Case {
+public class Tresor extends Case{
 
+    private int nbTresors;
+
+    public void supprimerTresor(){
+        nbTresors--;
+    }
 }
